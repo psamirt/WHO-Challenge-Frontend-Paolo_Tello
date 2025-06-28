@@ -1,5 +1,5 @@
 "use client";
-import { useCartStore } from "@/store/cart";
+import { useCartStore } from "@/store/cartStore";
 import React from "react";
 import { LuShoppingCart } from "react-icons/lu";
 

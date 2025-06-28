@@ -1,9 +1,12 @@
 "use client";
 import { useFetchProducts } from "@/utils/productsApi";
 import CardProducts from "@/components/CardProducts";
+import { Button } from "flowbite-react";
+import { useCartStore } from "@/store/cartStore";
 
 export default function Home() {
   const { products, isLoading, error } = useFetchProducts();
+  const { clearCart } = useCartStore();
 
   if (isLoading) {
     return (
@@ -30,18 +33,30 @@ export default function Home() {
   return (
     <div className="min-h-screen ">
       <header className=" shadow-sm">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-amber-50">Tienda de Productos</h1>
+        <div className="container mx-auto px-4 py-6 flex justify-around">
+          <h1 className="text-3xl font-bold text-amber-50">
+            Tienda de Productos
+          </h1>
+          <Button
+            onClick={() => {
+              localStorage.removeItem("cart");
+              clearCart();
+            }}
+          >
+            Limpiar el carrito
+          </Button>
         </div>
       </header>
-      
+
       <main>
         {products && products.length > 0 ? (
           <CardProducts products={products} />
         ) : (
           <div className="container mx-auto px-4 py-8">
             <div className="text-center">
-              <p className="text-amber-50 text-lg">No se encontraron productos</p>
+              <p className="text-amber-50 text-lg">
+                No se encontraron productos
+              </p>
             </div>
           </div>
         )}

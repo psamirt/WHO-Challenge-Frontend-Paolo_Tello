@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Product } from "@/types/products";
-import { useCartStore } from "@/store/cart";
+import { useCartStore } from "@/store/cartStore";
 import { FaRegStar } from "react-icons/fa";
 import Image from "next/image";
 
@@ -11,6 +11,7 @@ interface CardProductsProps {
 
 const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
   const { addToCart } = useCartStore();
+
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const handleAddToCart = (product: Product) => {
@@ -36,6 +37,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
           >
             <div className="relative h-48 overflow-hidden">
               <Image
+                loading="lazy"
                 src={product.image}
                 alt={product.title}
                 fill
@@ -82,13 +84,8 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
           <div className="rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto modal-scroll bg-slate-900">
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
-                <h2 className="text-2xl font-bold">
-                  {selectedProduct.title}
-                </h2>
-                <button
-                  onClick={closeModal}
-                  className="text-2xl"
-                >
+                <h2 className="text-2xl font-bold">{selectedProduct.title}</h2>
+                <button onClick={closeModal} className="text-2xl">
                   ×
                 </button>
               </div>
