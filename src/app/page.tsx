@@ -3,10 +3,15 @@ import { useFetchProducts } from "@/utils/productsApi";
 import CardProducts from "@/components/CardProducts";
 import { Button } from "flowbite-react";
 import { useCartStore } from "@/store/cartStore";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { products, isLoading, error } = useFetchProducts();
   const { clearCart } = useCartStore();
+  const router = useRouter();
+  const handleCreateProduct = () => {
+    router.push("/products/create");
+  };
 
   if (isLoading) {
     return (
@@ -33,10 +38,18 @@ export default function Home() {
   return (
     <div className="min-h-screen ">
       <header className=" shadow-sm">
-        <div className="container mx-auto px-4 py-6 flex justify-around">
+        <div className="container mx-auto px-4 py-6 flex justify-between">
           <h1 className="text-3xl font-bold text-amber-50">
             Bienvenido a la prueba técnica de Welding Helmets Online
           </h1>
+          <Button
+            color={"light"}
+            onClick={() => {
+              handleCreateProduct();
+            }}
+          >
+            Crear producto
+          </Button>
           <Button
             onClick={() => {
               localStorage.removeItem("cart");
