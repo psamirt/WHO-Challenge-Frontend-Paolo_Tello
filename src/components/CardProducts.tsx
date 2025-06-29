@@ -64,7 +64,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
                     e.stopPropagation();
                     handleAddToCart(product);
                   }}
-                  className="bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200"
+                  className="bg-blue-600 cursor-pointer px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200"
                 >
                   Agregar
                 </button>

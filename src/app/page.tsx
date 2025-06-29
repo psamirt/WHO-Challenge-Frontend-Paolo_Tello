@@ -35,7 +35,7 @@ export default function Home() {
       <header className=" shadow-sm">
         <div className="container mx-auto px-4 py-6 flex justify-around">
           <h1 className="text-3xl font-bold text-amber-50">
-            Tienda de Productos
+            Bienvenido a la prueba técnica de Welding Helmets Online
           </h1>
           <Button
             onClick={() => {
