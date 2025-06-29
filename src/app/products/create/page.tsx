@@ -84,7 +84,7 @@ const CreateProduct = () => {
                     type="text"
                     id="title"
                     name="title"
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black ${
                       errors.title && touched.title
                         ? "border-red-500"
                         : "border-gray-300"
@@ -111,7 +111,7 @@ const CreateProduct = () => {
                     name="price"
                     step="0.01"
                     min="0"
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
                       errors.price && touched.price
                         ? "border-red-500"
                         : "border-gray-300"
@@ -136,7 +136,7 @@ const CreateProduct = () => {
                     type="text"
                     id="category"
                     name="category"
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
                       errors.category && touched.category
                         ? "border-red-500"
                         : "border-gray-300"
@@ -162,7 +162,7 @@ const CreateProduct = () => {
                     id="description"
                     name="description"
                     rows={4}
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
                       errors.description && touched.description
                         ? "border-red-500"
                         : "border-gray-300"
@@ -187,7 +187,7 @@ const CreateProduct = () => {
                     type="url"
                     id="image"
                     name="image"
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
                       errors.image && touched.image
                         ? "border-red-500"
                         : "border-gray-300"
@@ -216,7 +216,7 @@ const CreateProduct = () => {
                       step="0.1"
                       min="0"
                       max="5"
-                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
                         errors.rating?.rate && touched.rating?.rate
                           ? "border-red-500"
                           : "border-gray-300"
@@ -242,7 +242,7 @@ const CreateProduct = () => {
                       id="rating.count"
                       name="rating.count"
                       min="0"
-                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
                         errors.rating?.count && touched.rating?.count
                           ? "border-red-500"
                           : "border-gray-300"
