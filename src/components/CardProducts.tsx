@@ -73,6 +73,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
           </div>
         ))}
       </div>
+      
     </div>
   );
 };

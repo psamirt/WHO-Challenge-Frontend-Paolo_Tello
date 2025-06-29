@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
+import { AnimatePresence, motion } from "motion/react";
+import { Product } from "@/types/products";
 
 const ProductSchema = Yup.object().shape({
   title: Yup.string()
@@ -10,6 +12,10 @@ const ProductSchema = Yup.object().shape({
     .max(100, "El título no puede exceder 100 caracteres")
     .required("El título es obligatorio"),
   price: Yup.number()
+    .transform((value, originalValue) =>
+      originalValue === "" ? undefined : Number(originalValue)
+    )
+    .typeError("Debe ser un número")
     .positive("El precio debe ser un número positivo")
     .min(0.01, "El precio debe ser mayor a 0")
     .required("El precio es obligatorio"),
@@ -26,18 +32,30 @@ const ProductSchema = Yup.object().shape({
     .required("La URL de la imagen es obligatoria"),
   rating: Yup.object().shape({
     rate: Yup.number()
+      .transform((value, originalValue) =>
+        originalValue === "" ? undefined : Number(originalValue)
+      )
+      .typeError("Debe ser un número")
       .min(0, "La calificación debe ser mayor o igual a 0")
       .max(5, "La calificación no puede exceder 5")
       .required("La calificación es obligatoria"),
+
     count: Yup.number()
-      .integer("El conteo debe ser un número entero")
+      .transform((value, originalValue) =>
+        originalValue === "" ? undefined : Number(originalValue)
+      )
+      .typeError("Debe ser un número entero")
+      .integer("Debe ser entero")
       .min(0, "El conteo debe ser mayor o igual a 0")
       .required("El conteo es obligatorio"),
   }),
 });
 
 const CreateProduct = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [productData, setProductData] = useState<Product | null>(null);
   const initialValues = {
+    id: Number(Math.random().toString(36)),
     title: "",
     price: "",
     description: "",
@@ -53,7 +71,20 @@ const CreateProduct = () => {
     values: typeof initialValues,
     { setSubmitting, resetForm }: FormikHelpers<typeof initialValues>
   ) => {
-    console.log("Datos del formulario:", values);
+    const product: Product = {
+      id: values.id,
+      title: values.title,
+      price: Number(values.price),
+      description: values.description,
+      category: values.category,
+      image: values.image,
+      rating: {
+        rate: Number(values.rating.rate),
+        count: Number(values.rating.count),
+      },
+    };
+    setProductData(product);
+    setShowModal(true);
     setSubmitting(false);
     resetForm();
   };
@@ -278,6 +309,34 @@ const CreateProduct = () => {
           </Formik>
         </div>
       </div>
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white p-6 rounded-md max-w-xl w-full shadow-lg relative"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+            >
+              <h2 className="text-xl text-gray-700 font-bold mb-4">Producto Creado</h2>
+              <pre className="bg-gray-100 text-sm p-4 overflow-x-auto rounded-md max-h-[400px] text-black">
+                {JSON.stringify(productData, null, 2)}
+              </pre>
+              <button
+                onClick={() => setShowModal(false)}
+                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              >
+                Cerrar
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
