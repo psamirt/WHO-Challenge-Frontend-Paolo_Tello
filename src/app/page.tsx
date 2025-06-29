@@ -38,8 +38,8 @@ export default function Home() {
   return (
     <div className="min-h-screen ">
       <header className=" shadow-sm">
-        <div className="container mx-auto px-4 py-6 flex justify-between">
-          <h1 className="text-3xl font-bold text-amber-50">
+        <div className="container mx-auto px-4 py-6 flex justify-between flex-col md:flex-row gap-3">
+          <h1 className="md:text-3xl font-bold text-amber-50">
             Bienvenido a la prueba técnica de Welding Helmets Online
           </h1>
           <Button
