@@ -20,6 +20,8 @@ export interface CartState {
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
   clearCart: () => void;
+  sumItem: (productId: number) => void;
+  restItem: (productId: number) => void;
 }
 
 export type CartStore = {
@@ -27,4 +29,6 @@ export type CartStore = {
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
   clearCart: () => void;
+  sumItem: (productId: number) => void;
+  restItem: (productId: number) => void;
 };

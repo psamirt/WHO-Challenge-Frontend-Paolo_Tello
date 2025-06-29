@@ -28,6 +28,25 @@ export const useCartStore = create<CartStore>()(
         set((state) => ({
           cart: state.cart.filter((product) => product.id !== productId),
         })),
+      sumItem: (productId: number) =>
+        set((state) => ({
+          cart: state.cart.map((product) =>
+            product.id === productId
+              ? { ...product, quantity: product.quantity + 1 }
+              : product
+          ),
+        })),
+      restItem: (productId: number) =>
+        set((state) => ({
+          cart: state.cart.map((product) =>
+            product.id === productId
+              ? {
+                  ...product,
+                  quantity: product.quantity > 1 ? product.quantity - 1 : 1,
+                }
+              : product
+          ),
+        })),
       clearCart: () => set({ cart: [] }),
     }),
     {

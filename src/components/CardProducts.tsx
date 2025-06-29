@@ -28,7 +28,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
         {products?.map((product) => (
           <div
             key={product.id}
-            className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-slate-700"
+            className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-slate-700 justify-between flex flex-col"
             onClick={() => handleProductClick(product)}
           >
             <div className="relative h-48 overflow-hidden">
@@ -41,7 +41,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
             </div>
-            <div className="p-4">
+            <div className="p-4 flex flex-col justify-between h-[165px]">
               <h3 className="text-lg font-semibold mb-2 line-clamp-2">
                 {product.title}
               </h3>
@@ -64,7 +64,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
                     e.stopPropagation();
                     handleAddToCart(product);
                   }}
-                  className="bg-blue-600 cursor-pointer px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200"
+                  className="bg-blue-600 cursor-pointer px-4 py-2  rounded-md hover:bg-blue-700 transition-colors duration-200"
                 >
                   Agregar
                 </button>
