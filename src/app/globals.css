@@ -45,8 +45,8 @@
 }
 
 body {
-  padding-right: 10%;
-  padding-left: 10%;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 /* Estilos para el truncado de texto */

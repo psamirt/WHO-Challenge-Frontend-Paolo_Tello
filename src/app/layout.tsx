@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="scroll-smooth">
       <body>
         <Navbar />
         <Providers>{children}</Providers>

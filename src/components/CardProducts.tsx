@@ -23,12 +23,12 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
         {products?.map((product) => (
           <div
             key={product.id}
-            className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-slate-700 justify-between flex flex-col"
+            className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-gray-100 justify-between flex flex-col w-[300px] mx-auto"
             onClick={() => handleProductClick(product)}
           >
             <div className="relative h-48 overflow-hidden">
@@ -56,15 +56,13 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
                 )}
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xl font-bold text-green-600">
-                  ./S {product.price}
-                </span>
+                <span className="text-xl font-bold ">S/{product.price}</span>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleAddToCart(product);
                   }}
-                  className="bg-blue-600 cursor-pointer px-4 py-2  rounded-md hover:bg-blue-700 transition-colors duration-200"
+                  className="bg-blue-600 cursor-pointer px-4 py-2  rounded-md hover:bg-blue-700 transition-colors duration-200 text-white"
                 >
                   Agregar
                 </button>
@@ -73,7 +71,6 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
           </div>
         ))}
       </div>
-      
     </div>
   );
 };

@@ -1,23 +1,16 @@
 "use client";
 import { useFetchProducts } from "@/utils/productsApi";
 import CardProducts from "@/components/CardProducts";
-import { Button } from "flowbite-react";
-import { useCartStore } from "@/store/cartStore";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { products, isLoading, error } = useFetchProducts();
-  const { clearCart } = useCartStore();
-  const router = useRouter();
-  const handleCreateProduct = () => {
-    router.push("/products/create");
-  };
+
 
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black mx-auto mb-4"></div>
           <p className="text-gray-600">Cargando productos...</p>
         </div>
       </div>
@@ -37,30 +30,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen ">
-      <header className=" shadow-sm">
-        <div className="container mx-auto px-4 py-6 flex justify-between flex-col md:flex-row gap-3">
-          <h1 className="md:text-3xl font-bold text-amber-50">
-            Bienvenido a la prueba técnica de Welding Helmets Online
-          </h1>
-          <Button
-            color={"light"}
-            onClick={() => {
-              handleCreateProduct();
-            }}
-          >
-            Crear producto
-          </Button>
-          <Button
-            onClick={() => {
-              localStorage.removeItem("cart");
-              clearCart();
-            }}
-          >
-            Limpiar el carrito
-          </Button>
-        </div>
-      </header>
-
       <main>
         {products && products.length > 0 ? (
           <CardProducts products={products} />
