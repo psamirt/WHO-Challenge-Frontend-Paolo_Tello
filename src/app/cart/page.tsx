@@ -56,7 +56,7 @@ const Cart = () => {
                   <td className="p-2 border-b max-w-[300px] align-middle">
                     <div className="flex items-center gap-2">
                       <button
-                        className="text-red-500 hover:text-red-700"
+                        className="text-red-500 hover:text-white transition-colors duration-300 hover:bg-red-500 rounded-full p-1 cursor-pointer"
                         onClick={() => handleDelete(item.id)}
                       >
                         <TiDeleteOutline size={20} />

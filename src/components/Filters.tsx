@@ -102,7 +102,7 @@ const Filters = () => {
                     ...rest.style,
                     height: "20px",
                     width: "20px",
-                    backgroundColor: "#007bff",
+                    backgroundColor: "#3b25c1",
                     borderRadius: "50%",
                   }}
                 />

@@ -29,9 +29,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
       {products.length === 0 ? (
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
-            <p className="text-amber-50 text-lg">
-              No se encontraron productos
-            </p>
+            <p className="text-amber-50 text-lg">No se encontraron productos</p>
           </div>
         </div>
       ) : (
@@ -69,11 +67,11 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold ">S/{product.price}</span>
                   <button
+                    className="btn btn-primary"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleAddToCart(product);
                     }}
-                    className="bg-blue-600 cursor-pointer px-4 py-2  rounded-md hover:bg-blue-700 transition-colors duration-200 text-white"
                   >
                     Agregar
                   </button>

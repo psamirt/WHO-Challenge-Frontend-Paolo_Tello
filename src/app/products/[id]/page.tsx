@@ -4,7 +4,6 @@ import { useCartStore } from "@/store/cartStore";
 import { FaRegStar } from "react-icons/fa";
 import Image from "next/image";
 import React from "react";
-import { Button } from "flowbite-react";
 import { useParams } from "next/navigation";
 
 const Product = () => {
@@ -83,12 +82,12 @@ const Product = () => {
                 {selectedProduct.description}
               </p>
 
-              <Button
+              <button
+                className="btn btn-primary"
                 onClick={() => addToCart(selectedProduct)}
-                className="w-full bg-blue-600 py-3 px-6 rounded-md hover:bg-blue-700 text-white font-semibold transition"
               >
                 Agregar al Carrito
-              </Button>
+              </button>
             </div>
           </div>
         </div>
