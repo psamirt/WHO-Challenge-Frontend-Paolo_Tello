@@ -1,7 +1,8 @@
 "use client";
+import DeleteConfirmModal from "@/components/DeleteConfirmModal";
 import { useCartStore } from "@/store/cartStore";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 import { TiDeleteOutline } from "react-icons/ti";
@@ -10,9 +11,31 @@ const Cart = () => {
   const { cart, restItem, sumItem, removeFromCart } = useCartStore();
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<number | null>(null);
+
+  const handleDelete = (id: number) => {
+    setItemToDelete(id);
+    setModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (itemToDelete !== null) {
+      removeFromCart(itemToDelete);
+      setItemToDelete(null);
+      setModalOpen(false);
+      toast.success("Producto eliminado del carrito");
+    }
+  };
+
   return (
     <div className="container mx-auto md:px-4 py-8">
       <h2 className="md:text-2xl font-bold mb-4">Carrito de Compras</h2>
+      <DeleteConfirmModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onConfirm={confirmDelete}
+      />
       {cart.length === 0 ? (
         <p>Tu carrito está vacío.</p>
       ) : (
@@ -34,46 +57,11 @@ const Cart = () => {
                     <div className="flex items-center gap-2">
                       <button
                         className="text-red-500 hover:text-red-700"
-                        onClick={() =>
-                          toast(
-                            (t) => (
-                              <div className="flex flex-col gap-2">
-                                <h1 className="text-3xl font-bold text-gray-600">
-                                  Eliminar
-                                </h1>
-                                <hr className="border-t border-gray-300 my-2" />
-                                <span>
-                                  ¿Estás seguro de eliminar este producto?
-                                </span>
-                                <div className="flex justify-evenly w-full">
-                                  <button
-                                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                                    onClick={() => {
-                                      removeFromCart(item.id);
-                                      toast.dismiss(t.id);
-                                    }}
-                                  >
-                                    Sí
-                                  </button>
-                                  <button
-                                    className="bg-gray-300 text-gray-700 px-2 py-1 rounded hover:bg-gray-400"
-                                    onClick={() => toast.dismiss(t.id)}
-                                  >
-                                    No
-                                  </button>
-                                </div>
-                              </div>
-                            ),
-                            {
-                              duration: Infinity,
-                              id: `confirm-delete-${item.id}`,
-                            }
-                          )
-                        }
+                        onClick={() => handleDelete(item.id)}
                       >
                         <TiDeleteOutline size={20} />
                       </button>
-                      <span className="truncate max-w-[100px] block">
+                      <span className="truncate max-w-[100px] md:truncate-none md:max-w-full block">
                         {item.title}
                       </span>
                     </div>
@@ -88,7 +76,9 @@ const Cart = () => {
                       className="object-contain"
                     />
                   </td>
-                  <td className="p-2 border-b text-sm md:text-md min-w-[80px]">S/ {item.price.toFixed(2)}</td>
+                  <td className="p-2 border-b text-sm md:text-md min-w-[80px]">
+                    S/ {item.price.toFixed(2)}
+                  </td>
                   <td className="p-2 border-b align-middle">
                     <div className="flex items-center gap-2">
                       <button
@@ -112,10 +102,15 @@ const Cart = () => {
                 </tr>
               ))}
               <tr>
-                <td colSpan={4} className="text-right font-bold p-2 text-sm md:text-md">
+                <td
+                  colSpan={4}
+                  className="text-right font-bold p-2 text-sm md:text-md"
+                >
                   Total:
                 </td>
-                <td className="p-2 font-bold text-sm md:text-md">S/ {total.toFixed(2)}</td>
+                <td className="p-2 font-bold text-sm md:text-md">
+                  S/ {total.toFixed(2)}
+                </td>
               </tr>
             </tbody>
           </table>

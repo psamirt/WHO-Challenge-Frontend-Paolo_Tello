@@ -32,3 +32,9 @@ export type CartStore = {
   sumItem: (productId: number) => void;
   restItem: (productId: number) => void;
 };
+
+export type ModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+};
