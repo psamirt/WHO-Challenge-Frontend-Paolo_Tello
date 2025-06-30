@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useProductStore } from "@/store/productStore";
 import { Range } from "react-range";
+import { useRouter } from "next/navigation";
+import { useCartStore } from "@/store/cartStore";
 
 const Filters = () => {
+  const router = useRouter();
+  const { clearCart } = useCartStore();
   const { products, setFiltered } = useProductStore();
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -49,8 +53,12 @@ const Filters = () => {
     }
   };
 
+  const handleCreateProduct = () => {
+    router.push("/products/create");
+  };
+
   return (
-    <div className="flex gap-8 p-4 bg-white rounded mb-6 flex-wrap">
+    <div className="flex gap-8 p-4 bg-white rounded mb-6 flex-wrap items-center justify-between">
       <div>
         <label className="block mb-1 font-semibold">Categoría</label>
         <select
@@ -67,9 +75,9 @@ const Filters = () => {
         </select>
       </div>
       <div className="w-64">
-        <label className="block mb-1 font-semibold">
-          Precio: S/ {priceLimits[0]} - S/ {priceLimits[1]}
-        </label>
+        <div className="text-sm text-center font-semibold">
+          Precio S/ {priceRange[0]} - S/ {priceRange[1]}
+        </div>
         {priceLimits[0] < priceLimits[1] && (
           <Range
             step={PRICE_STEP}
@@ -110,10 +118,25 @@ const Filters = () => {
             }}
           />
         )}
-        <div className="text-sm text-center">
-          S/ {priceRange[0]} - S/ {priceRange[1]}
-        </div>
       </div>
+
+      <button
+        className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
+        onClick={() => {
+          handleCreateProduct();
+        }}
+      >
+        Crear producto
+      </button>
+      <button
+        className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
+        onClick={() => {
+          localStorage.removeItem("cart");
+          clearCart();
+        }}
+      >
+        Limpiar el carrito
+      </button>
     </div>
   );
 };

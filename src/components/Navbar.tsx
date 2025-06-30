@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { FaHome } from "react-icons/fa";
 
 const Navbar = () => {
-  const { cart, clearCart } = useCartStore();
+  const { cart } = useCartStore();
   const router = useRouter();
   const handleClickCart = () => {
     router.push("/cart");
@@ -15,9 +15,7 @@ const Navbar = () => {
     router.push("/");
   };
 
-  const handleCreateProduct = () => {
-    router.push("/products/create");
-  };
+
 
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
@@ -35,24 +33,6 @@ const Navbar = () => {
         </h1>
 
         <button
-          className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
-          onClick={() => {
-            handleCreateProduct();
-          }}
-        >
-          Crear producto
-        </button>
-        <button
-          className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
-          onClick={() => {
-            localStorage.removeItem("cart");
-            clearCart();
-          }}
-        >
-          Limpiar el carrito
-        </button>
-
-        <button
           onClick={() => handleClickCart()}
           className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
         >
@@ -62,7 +42,7 @@ const Navbar = () => {
           </span>
         </button>
       </div>
-      <div className="flex md:hidden px-4 py-3 justify-between items-center bg-white shadow-md sticky top-0 z-50">
+      <div className="md:hidden navbar bg-base-100 shadow-sm justify-between px-4 py-2">
         <button onClick={handleClickHome}>
           <FaHome size={24} />
         </button>

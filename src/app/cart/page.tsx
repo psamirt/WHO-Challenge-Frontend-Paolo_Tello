@@ -29,7 +29,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mx-auto md:px-4 py-8">
+    <div className="container mx-auto py-8 px-4">
       <h2 className="md:text-2xl font-bold mb-4">Carrito de Compras</h2>
       <DeleteConfirmModal
         isOpen={modalOpen}
