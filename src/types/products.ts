@@ -33,6 +33,16 @@ export type CartStore = {
   restItem: (productId: number) => void;
 };
 
+export type ProductStore = {
+  products: Product[];
+  filtered: Product[];
+  setProducts: (products: Product[]) => void;
+  setFiltered: (filtered: Product[]) => void;
+  getProductById: (id: number) => Product | undefined;
+  filterProductByCategory: (category: string) => void;
+  filterProductByPrice: (min: number, max: number) => void;
+};
+
 export type ModalProps = {
   isOpen: boolean;
   onClose: () => void;

@@ -1,10 +1,18 @@
 "use client";
 import { useFetchProducts } from "@/utils/productsApi";
 import CardProducts from "@/components/CardProducts";
+import { useEffect } from "react";
+import { useProductStore } from "@/store/productStore";
 
 export default function Home() {
   const { products, isLoading, error } = useFetchProducts();
+  const { setProducts, filtered } = useProductStore();
 
+  useEffect(() => {
+    if (products) {
+      setProducts(products);
+    }
+  }, [products, setProducts]);
 
   if (isLoading) {
     return (
@@ -31,17 +39,7 @@ export default function Home() {
   return (
     <div className="min-h-screen ">
       <main>
-        {products && products.length > 0 ? (
-          <CardProducts products={products} />
-        ) : (
-          <div className="container mx-auto px-4 py-8">
-            <div className="text-center">
-              <p className="text-amber-50 text-lg">
-                No se encontraron productos
-              </p>
-            </div>
-          </div>
-        )}
+        <CardProducts products={filtered} />
       </main>
     </div>
   );
