@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <div className="min-h-[90vh]">
-      <main className="md:flex flex-row px-4 md:px-8 h-[90vh]">
+      <main className="md:flex flex-row px-4 md:px-8 h-[90vh] mt-20 md:mt-0">
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0, y: -10 }}

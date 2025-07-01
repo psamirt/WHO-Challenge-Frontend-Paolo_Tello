@@ -41,7 +41,7 @@ const Product = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.3 }}
-        className="min-h-[80vh] flex flex-col items-center justify-center"
+        className="min-h-[80vh] flex flex-col items-center justify-center mt-14 md:mt-0"
       >
         <div className="max-w-4xl mx-auto rounded-lg">
           <div className="p-6">

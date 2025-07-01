@@ -69,7 +69,7 @@ const CreateProduct = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.3 }}
-        className="py-8"
+        className="py-8 mt-10 md:mt-0"
       >
         <div className="max-w-2xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-md p-6">

@@ -36,7 +36,7 @@ const Cart = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.3 }}
-        className="container mx-auto py-8 px-4"
+        className="container mx-auto py-8 px-4 mt-14 md:mt-0"
       >
         <h2 className="md:text-2xl font-bold mb-4">Carrito de Compras</h2>
         <DeleteConfirmModal
