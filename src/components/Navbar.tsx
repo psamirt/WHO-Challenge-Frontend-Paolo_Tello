@@ -51,11 +51,11 @@ const Navbar = () => {
         <button onClick={handleClickHome}>
           <FaHome size={24} />
         </button>
-        <ThemeMode />
         <h1 className="text-lg font-bold">Welding Helmets</h1>
+        <ThemeMode />
         <button onClick={handleClickCart} className="relative">
           <LuShoppingCart size={24} />
-          <span className="absolute -top-2 -right-2 bg-slate-100 rounded-full px-1 text-sm">
+          <span className="absolute -top-2 -right-2 bg-slate-100 rounded-full px-1 text-sm text-black">
             {totalQuantity}
           </span>
         </button>
