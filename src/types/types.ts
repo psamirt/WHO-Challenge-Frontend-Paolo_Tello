@@ -15,6 +15,10 @@ export type CartItem = Product & {
   quantity: number;
 };
 
+export interface CardProductsProps {
+  products: Product[];
+}
+
 export interface CartState {
   cart: Product[];
   addToCart: (product: Product) => void;
@@ -48,3 +52,12 @@ export type ModalProps = {
   onClose: () => void;
   onConfirm: () => void;
 };
+
+export interface PaginationStore {
+  currentPage: number;
+  totalPages: number;
+  itemsPerPage: number;
+  setCurrentPage: (page: number) => void;
+  setItemsPerPage: (items: number) => void;
+  setTotalItems: (total: number) => void;
+}

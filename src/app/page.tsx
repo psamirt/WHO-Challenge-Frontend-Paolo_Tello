@@ -3,16 +3,28 @@ import { useFetchProducts } from "@/utils/productsApi";
 import CardProducts from "@/components/CardProducts";
 import { useEffect } from "react";
 import { useProductStore } from "@/store/productStore";
+import Filters from "@/components/Filters";
+import Pagination from "@/components/Pagination";
+import { usePaginationStore } from "@/store/paginationStore";
 
 export default function Home() {
   const { products, isLoading, error } = useFetchProducts();
   const { setProducts, filtered } = useProductStore();
+  const {
+    currentPage,
+    itemsPerPage,
+    setTotalItems,
+  } = usePaginationStore();
 
   useEffect(() => {
     if (products) {
       setProducts(products);
     }
   }, [products, setProducts]);
+
+  useEffect(() => {
+    setTotalItems(filtered.length);
+  }, [filtered, setTotalItems]);
 
   if (isLoading) {
     return (
@@ -36,10 +48,21 @@ export default function Home() {
     );
   }
 
+  // Lógica de paginación
+  const startIdx = (currentPage - 1) * itemsPerPage;
+  const endIdx = startIdx + itemsPerPage;
+  const paginatedProducts = filtered.slice(startIdx, endIdx);
+
   return (
-    <div className="min-h-screen ">
-      <main>
-        <CardProducts products={filtered} />
+    <div className="min-h-[90vh] ">
+      <main className="md:flex flex-row px-4 md:px-8 h-[90vh]">
+        <div className="md:flex md:flex-col md:items-center md:justify-center">
+          <Filters />
+          <Pagination />
+        </div>
+        <div className="flex-1 flex flex-col">
+          <CardProducts products={paginatedProducts} />
+        </div>
       </main>
     </div>
   );

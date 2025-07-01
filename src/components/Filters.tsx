@@ -58,85 +58,88 @@ const Filters = () => {
   };
 
   return (
-    <div className="flex gap-8 p-4 bg-white rounded mb-6 flex-wrap items-center justify-between">
-      <div>
-        <label className="block mb-1 font-semibold">Categoría</label>
-        <select
-          className="border rounded px-2 py-1 w-full"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="">Todas</option>
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="w-64">
-        <div className="text-sm text-center font-semibold">
-          Precio S/ {priceRange[0]} - S/ {priceRange[1]}
+    <div className="flex flex-col md:gap-8 gap-1 p-4 bg-gray-100 rounded mb-6 flex-wrap items-center justify-between">
+      <div className="flex flex-col gap-3 justify-between w-full">
+        <div>
+          <label className="block mb-1 font-semibold">Categoría</label>
+          <select
+            className="border rounded px-2 py-1 w-full"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">Todas</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
-        {priceLimits[0] < priceLimits[1] && (
-          <Range
-            step={PRICE_STEP}
-            min={priceLimits[0]}
-            max={priceLimits[1]}
-            values={priceRange}
-            onChange={handlePriceChange}
-            allowOverlap={false}
-            renderTrack={({ props, children }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: "6px",
-                  background: "#ddd",
-                  borderRadius: "4px",
-                  margin: "1rem 0",
-                }}
-              >
-                {children}
-              </div>
-            )}
-            renderThumb={({ props }) => {
-              const { key, ...rest } = props;
-              return (
+        <div className="md:w-64">
+          <div className="text-sm text-center font-semibold">
+            Precio S/ {priceRange[0]} - S/ {priceRange[1]}
+          </div>
+          {priceLimits[0] < priceLimits[1] && (
+            <Range
+              step={PRICE_STEP}
+              min={priceLimits[0]}
+              max={priceLimits[1]}
+              values={priceRange}
+              onChange={handlePriceChange}
+              allowOverlap={false}
+              renderTrack={({ props, children }) => (
                 <div
-                  key={key}
-                  {...rest}
+                  {...props}
                   style={{
-                    ...rest.style,
-                    height: "20px",
-                    width: "20px",
-                    backgroundColor: "#3b25c1",
-                    borderRadius: "50%",
+                    ...props.style,
+                    height: "6px",
+                    background: "#ddd",
+                    borderRadius: "4px",
+                    margin: "1rem 0",
                   }}
-                />
-              );
+                >
+                  {children}
+                </div>
+              )}
+              renderThumb={({ props }) => {
+                const { key, ...rest } = props;
+                return (
+                  <div
+                    key={key}
+                    {...rest}
+                    style={{
+                      ...rest.style,
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#3b25c1",
+                      borderRadius: "50%",
+                    }}
+                  />
+                );
+              }}
+            />
+          )}
+        </div>
+        <div className="flex md:flex-col gap-3 justify-between w-full mb-4">
+          <button
+            className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
+            onClick={() => {
+              handleCreateProduct();
             }}
-          />
-        )}
+          >
+            Crear producto
+          </button>
+          <button
+            className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
+            onClick={() => {
+              localStorage.removeItem("cart");
+              clearCart();
+            }}
+          >
+            Limpiar el carrito
+          </button>
+        </div>
       </div>
-
-      <button
-        className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
-        onClick={() => {
-          handleCreateProduct();
-        }}
-      >
-        Crear producto
-      </button>
-      <button
-        className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
-        onClick={() => {
-          localStorage.removeItem("cart");
-          clearCart();
-        }}
-      >
-        Limpiar el carrito
-      </button>
     </div>
   );
 };

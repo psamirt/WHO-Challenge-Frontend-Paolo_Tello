@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { AnimatePresence, motion } from "motion/react";
-import { Product } from "@/types/products";
+import { Product } from "@/types/types";
 
 const ProductSchema = Yup.object().shape({
   title: Yup.string()

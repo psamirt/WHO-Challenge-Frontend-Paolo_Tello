@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
-    <nav className="items-center max-w-[1500px] mx-auto  bg-white shadow-md rounded-lg mb-6 sticky top-0 z-50">
+    <nav className="items-center max-w-[1500px] mx-auto bg-white shadow-md rounded-lg sticky top-0 z-50">
       <title className="md:text-3xl font-bold">
         Prueba técnica de Welding Helmets Online
       </title>

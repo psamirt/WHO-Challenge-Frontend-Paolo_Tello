@@ -1,15 +1,13 @@
 "use client";
 import React from "react";
-import { Product } from "@/types/products";
+import { CardProductsProps, Product } from "@/types/types";
 import { useCartStore } from "../store/cartStore";
 import { FaRegStar } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Filters from "./Filters";
+// import Filters from "./Filters";
 
-interface CardProductsProps {
-  products: Product[];
-}
+
 
 const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
   const { addToCart } = useCartStore();
@@ -25,7 +23,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <Filters />
+      {/* <Filters /> */}
       {products.length === 0 ? (
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">

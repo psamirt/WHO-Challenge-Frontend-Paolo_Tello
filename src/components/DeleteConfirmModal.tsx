@@ -1,5 +1,5 @@
 "use client";
-import { ModalProps } from "@/types/products";
+import { ModalProps } from "@/types/types";
 import { AnimatePresence, motion } from "motion/react";
 
 const DeleteConfirmModal = ({ isOpen, onClose, onConfirm }: ModalProps) => {
