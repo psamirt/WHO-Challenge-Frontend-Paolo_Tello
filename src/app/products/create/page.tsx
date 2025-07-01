@@ -30,25 +30,6 @@ const ProductSchema = Yup.object().shape({
   image: Yup.string()
     .url("Debe ser una URL válida")
     .required("La URL de la imagen es obligatoria"),
-  rating: Yup.object().shape({
-    rate: Yup.number()
-      .transform((value, originalValue) =>
-        originalValue === "" ? undefined : Number(originalValue)
-      )
-      .typeError("Debe ser un número")
-      .min(0, "La calificación debe ser mayor o igual a 0")
-      .max(5, "La calificación no puede exceder 5")
-      .required("La calificación es obligatoria"),
-
-    count: Yup.number()
-      .transform((value, originalValue) =>
-        originalValue === "" ? undefined : Number(originalValue)
-      )
-      .typeError("Debe ser un número entero")
-      .integer("Debe ser entero")
-      .min(0, "El conteo debe ser mayor o igual a 0")
-      .required("El conteo es obligatorio"),
-  }),
 });
 
 const CreateProduct = () => {
@@ -61,10 +42,6 @@ const CreateProduct = () => {
     description: "",
     category: "",
     image: "",
-    rating: {
-      rate: "",
-      count: "",
-    },
   };
 
   const handleSubmit = (
@@ -78,10 +55,6 @@ const CreateProduct = () => {
       description: values.description,
       category: values.category,
       image: values.image,
-      rating: {
-        rate: Number(values.rating.rate),
-        count: Number(values.rating.count),
-      },
     };
     setProductData(product);
     setShowModal(true);
@@ -90,7 +63,7 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="min-h-screen  py-8">
+    <div className="py-8">
       <div className="max-w-2xl mx-auto px-4">
         <div className="bg-white rounded-lg shadow-md p-6">
           <h1 className="md:text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -231,63 +204,6 @@ const CreateProduct = () => {
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="rating.rate"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Calificación (0-5) *
-                    </label>
-                    <Field
-                      type="number"
-                      id="rating.rate"
-                      name="rating.rate"
-                      step="0.1"
-                      min="0"
-                      max="5"
-                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
-                        errors.rating?.rate && touched.rating?.rate
-                          ? "border-red-500"
-                          : "border-gray-300"
-                      }`}
-                      placeholder="4.5"
-                    />
-                    <ErrorMessage
-                      name="rating.rate"
-                      component="div"
-                      className="text-red-500 text-sm mt-1"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="rating.count"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Número de Reseñas *
-                    </label>
-                    <Field
-                      type="number"
-                      id="rating.count"
-                      name="rating.count"
-                      min="0"
-                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 text-black focus:ring-blue-500 focus:border-blue-500 ${
-                        errors.rating?.count && touched.rating?.count
-                          ? "border-red-500"
-                          : "border-gray-300"
-                      }`}
-                      placeholder="120"
-                    />
-                    <ErrorMessage
-                      name="rating.count"
-                      component="div"
-                      className="text-red-500 text-sm mt-1"
-                    />
-                  </div>
-                </div>
-
                 <div className="flex gap-4 pt-4">
                   <button
                     type="submit"
