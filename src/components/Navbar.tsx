@@ -28,9 +28,9 @@ const Navbar = () => {
           <FaHome size={30} />
           <span className="text-md">Inicio</span>
         </button>
-        <h1 className="md:text-3xl font-bold">
+        <title className="md:text-3xl font-bold">
           Prueba técnica de Welding Helmets Online
-        </h1>
+        </title>
 
         <button
           onClick={() => handleClickCart()}

@@ -42,7 +42,6 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  loading="lazy"
                   src={product.image}
                   alt={product.title}
                   fill
