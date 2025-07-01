@@ -10,11 +10,8 @@ import { usePaginationStore } from "@/store/paginationStore";
 export default function Home() {
   const { products, isLoading, error } = useFetchProducts();
   const { setProducts, filtered } = useProductStore();
-  const {
-    currentPage,
-    itemsPerPage,
-    setTotalItems,
-  } = usePaginationStore();
+  const { currentPage, itemsPerPage, setTotalItems, setCurrentPage } =
+    usePaginationStore();
 
   useEffect(() => {
     if (products) {
@@ -24,7 +21,8 @@ export default function Home() {
 
   useEffect(() => {
     setTotalItems(filtered.length);
-  }, [filtered, setTotalItems]);
+    setCurrentPage(1);
+  }, [filtered, setTotalItems, setCurrentPage]);
 
   if (isLoading) {
     return (
@@ -48,7 +46,6 @@ export default function Home() {
     );
   }
 
-  // Lógica de paginación
   const startIdx = (currentPage - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
   const paginatedProducts = filtered.slice(startIdx, endIdx);
