@@ -35,10 +35,10 @@ const Product = () => {
 
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg">
+      <div className="max-w-4xl mx-auto rounded-lg">
         <div className="p-6">
           <div className="flex justify-between items-start mb-6">
-            <h2 className="text-3xl font-bold text-gray-800">
+            <h2 className="text-3xl font-bold">
               {selectedProduct.title}
             </h2>
           </div>
@@ -63,9 +63,9 @@ const Product = () => {
               </div>
 
               {selectedProduct.rating && (
-                <div className="flex items-center gap-2 text-yellow-500">
-                  <FaRegStar className="w-5 h-5" />
-                  <span className="text-gray-700">
+                <div className="flex items-center gap-2">
+                  <FaRegStar className="w-5 h-5 text-yellow-500" />
+                  <span className="">
                     {selectedProduct.rating.rate} de 5 (
                     {selectedProduct.rating.count} reseñas)
                   </span>
@@ -73,12 +73,12 @@ const Product = () => {
               )}
 
               <div>
-                <span className="text-sm uppercase text-gray-500 tracking-widest">
+                <span className="text-sm uppercase tracking-widest">
                   {selectedProduct.category}
                 </span>
               </div>
 
-              <p className="text-gray-700 leading-relaxed">
+              <p className="leading-relaxed">
                 {selectedProduct.description}
               </p>
 

@@ -51,7 +51,7 @@ export default function Home() {
   const paginatedProducts = filtered.slice(startIdx, endIdx);
 
   return (
-    <div className="min-h-[90vh] ">
+    <div className="min-h-[90vh]">
       <main className="md:flex flex-row px-4 md:px-8 h-[90vh]">
         <div className="md:flex md:flex-col md:items-center md:justify-center">
           <Filters />

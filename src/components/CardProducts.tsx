@@ -7,8 +7,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 // import Filters from "./Filters";
 
-
-
 const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
   const { addToCart } = useCartStore();
   const router = useRouter();
@@ -31,11 +29,11 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 card">
           {products?.map((product) => (
             <div
               key={product.id}
-              className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-gray-100 justify-between flex flex-col w-[300px] mx-auto"
+              className="rounded-lg p-1 shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-base-200 cursor-pointer card-body  justify-between flex flex-col w-[300px] mx-auto"
               onClick={() => handleProductClick(product)}
             >
               <div className="relative h-48 overflow-hidden">
@@ -48,7 +46,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
                 />
               </div>
               <div className="p-4 flex flex-col justify-between h-[165px]">
-                <h3 className="text-lg font-semibold mb-2 line-clamp-2">
+                <h3 className="text-lg font-semibold mb-2 line-clamp-2 card-title">
                   {product.title}
                 </h3>
                 <div className="flex items-center mb-2">

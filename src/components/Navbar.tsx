@@ -4,6 +4,7 @@ import React from "react";
 import { LuShoppingCart } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import { FaHome } from "react-icons/fa";
+import ThemeMode from "./ThemeMode";
 
 const Navbar = () => {
   const { cart } = useCartStore();
@@ -17,7 +18,7 @@ const Navbar = () => {
 
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
-    <nav className="items-center max-w-[1500px] mx-auto bg-white shadow-md rounded-lg sticky top-0 z-50">
+    <nav className="items-center max-w-[1500px] mx-auto shadow-md rounded-lg sticky top-0 z-50">
       <title className="md:text-3xl font-bold">
         Prueba técnica de Welding Helmets Online
       </title>
@@ -33,20 +34,24 @@ const Navbar = () => {
           Prueba técnica de Welding Helmets Online
         </h1>
 
-        <button
-          onClick={() => handleClickCart()}
-          className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
-        >
-          <LuShoppingCart size={30} />
-          <span className="rounded-full bg-slate-100 p-1 text-black">
-            {totalQuantity}
-          </span>
-        </button>
+        <div className="flex items-center gap-4">
+          <ThemeMode />
+          <button
+            onClick={() => handleClickCart()}
+            className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
+          >
+            <LuShoppingCart size={30} />
+            <span className="rounded-full bg-slate-100 p-1 text-black">
+              {totalQuantity}
+            </span>
+          </button>
+        </div>
       </div>
       <div className="md:hidden navbar bg-base-100 shadow-sm justify-between px-4 py-2">
         <button onClick={handleClickHome}>
           <FaHome size={24} />
         </button>
+        <ThemeMode />
         <h1 className="text-lg font-bold">Welding Helmets</h1>
         <button onClick={handleClickCart} className="relative">
           <LuShoppingCart size={24} />

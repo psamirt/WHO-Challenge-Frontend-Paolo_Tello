@@ -58,8 +58,8 @@ const Filters = () => {
   };
 
   return (
-    <div className="flex flex-col md:gap-8 gap-1 p-4 bg-gray-100 rounded mb-6 flex-wrap items-center justify-between">
-      <div className="flex flex-col gap-3 justify-between w-full">
+    <div className="flex flex-col card bg-base-100 shadow-md md:gap-8 gap-1 p-4 rounded mb-2 flex-wrap items-center justify-between">
+      <div className="flex card-body bg-base-200 flex-col gap-3 justify-between w-full">
         <div>
           <label className="block mb-1 font-semibold">Categoría</label>
           <select
@@ -67,9 +67,11 @@ const Filters = () => {
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            <option value="">Todas</option>
+            <option className="text-black" value="">
+              Todas
+            </option>
             {categories.map((cat) => (
-              <option key={cat} value={cat}>
+              <option className="text-black" key={cat} value={cat}>
                 {cat}
               </option>
             ))}
