@@ -50,7 +50,7 @@ Este proyecto es una **prueba técnica** desarrollada para **Welding Helmets Onl
 - **Yup** - Validación de esquemas
 
 ### **UI/UX**
-- **Flowbite React** - Componentes de UI
+- **Daisy UI** - Componentes de UI
 - **Framer Motion** - Animaciones
 - **React Icons** - Iconografía
 
