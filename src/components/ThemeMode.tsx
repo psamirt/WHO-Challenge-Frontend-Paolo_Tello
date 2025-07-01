@@ -26,7 +26,7 @@ const ThemeMode = () => {
         checked={isDark}
         onChange={toggleTheme}
       />
-      {isDark ? <MdDarkMode size={20} color="yellow" /> : <MdLightMode size={20} color="orange" />}
+      {isDark ? <MdDarkMode data-testid="MdDarkMode" size={20} color="yellow" /> : <MdLightMode data-testid="MdLightMode" size={20} color="orange" />}
     </label>
   );
 };
