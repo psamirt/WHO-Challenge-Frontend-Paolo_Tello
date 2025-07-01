@@ -5,6 +5,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import { FaHome } from "react-icons/fa";
 import ThemeMode from "./ThemeMode";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { cart } = useCartStore();
@@ -40,7 +41,13 @@ const Navbar = () => {
             onClick={() => handleClickCart()}
             className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
           >
-            <LuShoppingCart size={30} />
+            <motion.div
+              key={totalQuantity}
+              animate={{ rotate: [0, 15, -15, 0] }}
+              transition={{ duration: 0.4 }}
+            >
+              <LuShoppingCart size={24} />
+            </motion.div>
             <span className="rounded-full bg-slate-100 p-1 text-black">
               {totalQuantity}
             </span>

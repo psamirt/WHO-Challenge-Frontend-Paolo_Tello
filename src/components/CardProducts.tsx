@@ -6,6 +6,8 @@ import { FaRegStar } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
+import { FaCartPlus } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
   const { addToCart } = useCartStore();
@@ -68,13 +70,15 @@ const CardProducts: React.FC<CardProductsProps> = ({ products }) => {
                       S/{product.price}
                     </span>
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary px-3 hover:bg-primary/80"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAddToCart(product);
+                        toast.success("Producto agregado al carrito");
                       }}
                     >
-                      Agregar
+                      <span className="text-sm">Añadir</span>
+                      <FaCartPlus size={25} />
                     </button>
                   </div>
                 </div>

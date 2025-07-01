@@ -10,11 +10,13 @@
     "test": "jest --watchAll --config jest.config.ts"
   },
   "dependencies": {
+    "@lordicon/element": "^1.11.0",
     "@tanstack/react-query": "^5.81.5",
     "@tanstack/react-query-devtools": "^5.81.5",
     "axios": "^1.10.0",
     "daisyui": "^5.0.43",
     "formik": "^2.4.6",
+    "lottie-web": "^5.13.0",
     "motion": "^12.19.2",
     "next": "15.3.4",
     "react": "^19.1.0",

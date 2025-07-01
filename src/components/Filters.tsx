@@ -124,7 +124,7 @@ const Filters = () => {
         </div>
         <div className="flex md:flex-col gap-3 justify-between w-full mb-4">
           <button
-            className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
+            className="items-center flex justify-center px-2 btn btn-primary cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
             onClick={() => {
               handleCreateProduct();
             }}
@@ -132,7 +132,7 @@ const Filters = () => {
             Crear producto
           </button>
           <button
-            className="items-center flex justify-center px-2 btn cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
+            className="items-center flex justify-center px-2 btn btn-primary cursor-pointer transition-transform duration-300 font-semibold md:gap-2  md:py-2 md:rounded-lg"
             onClick={() => {
               localStorage.removeItem("cart");
               clearCart();

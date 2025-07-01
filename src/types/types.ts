@@ -61,3 +61,4 @@ export interface PaginationStore {
   setItemsPerPage: (items: number) => void;
   setTotalItems: (total: number) => void;
 }
+
