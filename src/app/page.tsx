@@ -6,6 +6,7 @@ import { useProductStore } from "@/store/productStore";
 import Filters from "@/components/Filters";
 import Pagination from "@/components/Pagination";
 import { usePaginationStore } from "@/store/paginationStore";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function Home() {
   const { products, isLoading, error } = useFetchProducts();
@@ -53,10 +54,18 @@ export default function Home() {
   return (
     <div className="min-h-[90vh]">
       <main className="md:flex flex-row px-4 md:px-8 h-[90vh]">
-        <div className="md:flex md:flex-col md:items-center md:justify-center">
-          <Filters />
-          <Pagination />
-        </div>
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+            className="md:flex md:flex-col md:items-center md:justify-center"
+          >
+            <Filters />
+            <Pagination />
+          </motion.div>
+        </AnimatePresence>
         <div className="flex-1 flex flex-col">
           <CardProducts products={paginatedProducts} />
         </div>
