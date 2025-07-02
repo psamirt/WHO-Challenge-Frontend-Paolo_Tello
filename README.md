@@ -185,10 +185,10 @@ Este proyecto es parte de una prueba técnica para Welding Helmets Online.
 ## 👨‍💻 Autor
 
 **Desarrollador** - Paolo Samir Tello Uypan
-- **Email**: [p_samir@hotmail.com]
-- **Celular**: [+51 982254431]
-- **LinkedIn**: [https://www.linkedin.com/in/paolo-tello-7a1872285/]
-- **Portafolio**: [https://portfolio-paolo-tello-seven.vercel.app/]
+- **Email**: p_samir@hotmail.com
+- **Celular**: +51 982254431
+- **LinkedIn**: https://www.linkedin.com/in/paolo-tello-7a1872285/
+- **Portafolio**: https://portfolio-paolo-tello-seven.vercel.app/
 
 ---
 
